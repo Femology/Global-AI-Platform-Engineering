@@ -28,3 +28,7 @@ Started the Architecting with Google Compute Engine series. I am learning the So
 When you update your GitHub for the Introduction to Google Cloud module, use this:
 
     "I mastered the hierarchy of Regions and Zones. I learned that a Region is a geographic boundary (like a city) and a Zone is a failure boundary (like a neighborhood). As an Architect, I design for Fault Tolerance by distributing resources across multiple zones to ensure that a single point of failure (like a local power outage) does not result in a global service disruption
+
+When you update your GitHub for this section, use this:
+
+    "I deconstructed the two pillars of Network Performance: Bandwidth (Capacity) and Latency (Delay). I learned that as an Architect, I must balance both. For 'Global Solutions' like AI agents or Gaming, Low Latency is the priority to ensure real-time responsiveness, while High Bandwidth is essential for data-heavy tasks like model training or video streaming."
