@@ -32,3 +32,7 @@ When you update your GitHub for the Introduction to Google Cloud module, use thi
 When you update your GitHub for this section, use this:
 
     "I deconstructed the two pillars of Network Performance: Bandwidth (Capacity) and Latency (Delay). I learned that as an Architect, I must balance both. For 'Global Solutions' like AI agents or Gaming, Low Latency is the priority to ensure real-time responsiveness, while High Bandwidth is essential for data-heavy tasks like model training or video streaming."
+
+
+    Strategic Insights: Interaction Modalities
+"I analyzed the four vectors of interacting with Google Cloud. While the Cloud Console provides vital visibility, I recognize that Cloud Shell / CLI (gcloud) and Admin APIs are the primary tools of an Architect. To build scalable AI platforms, infrastructure must be treated as code. I also noted the utility of the Cloud Mobile App for mobile incident management and critical SSH access during outages."
