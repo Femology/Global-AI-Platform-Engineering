@@ -23,3 +23,8 @@ In this foundational lab, I transitioned from a "User" mindset to an "Architect"
 ---
 
 Started the Architecting with Google Compute Engine series. I am learning the Solution Continuum: balancing between IaaS (Maximum Control) and PaaS (Maximum Agility). I now understand that Infrastructure is the 'Underlying Framework' (Networking, Compute, Storage) that allows Applications to serve global users.
+
+
+When you update your GitHub for the Introduction to Google Cloud module, use this:
+
+    "I mastered the hierarchy of Regions and Zones. I learned that a Region is a geographic boundary (like a city) and a Zone is a failure boundary (like a neighborhood). As an Architect, I design for Fault Tolerance by distributing resources across multiple zones to ensure that a single point of failure (like a local power outage) does not result in a global service disruption
