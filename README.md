@@ -21,3 +21,5 @@ In this foundational lab, I transitioned from a "User" mindset to an "Architect"
 > "A Top 1% Architect doesn't just 'click buttons.' They manage the **Blast Radius**. By isolating the Dialogflow API within a specific Project and restricting permissions to 'Viewer' for non-essential staff, I protected the system from unauthorized changes and cost overruns."
 
 ---
+
+Started the Architecting with Google Compute Engine series. I am learning the Solution Continuum: balancing between IaaS (Maximum Control) and PaaS (Maximum Agility). I now understand that Infrastructure is the 'Underlying Framework' (Networking, Compute, Storage) that allows Applications to serve global users.
