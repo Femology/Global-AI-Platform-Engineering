@@ -1,38 +1,50 @@
-# Global AI Platform Engineering Journey
-**Candidate:** Oobayemi  
-**Goal:** Top 1% Software Engineer | AI Systems Architect  
+# Nexus-CLI
 
-## Phase 1: Cloud Engineering Foundation
-This phase focuses on mastering the "Raw Materials" of the Google Cloud ecosystem: Compute, Networking, and Security.
+Nexus-CLI is an open-source, dual-engine command-line interface chat utility. It provides a clean, aesthetic terminal interface that seamlessly falls back between high-performance AI engines to ensure zero downtime.
 
-###  Lab 1: A Tour of Google Cloud Hands-on Labs (GSP282)
-**Date:** March 10, 2026  
-**Status:** ✅ Completed (Score: 100/100)
+## ✨ Features
+- **Lightning Fast Primary Engine**: Powered by Groq (`Llama-3.3-70b-versatile`).
+- **Automated Failover System**: Gracefully pivots to Google AI Studio (`Gemini-1.5-flash`) on `HTTP 401` (Invalid/Missing Key) or `HTTP 429` (Rate Limits) without breaking the user's terminal loop.
+- **High-End UI Aesthetics**: Rendered with the `rich` library for elegant markdown displays, boxed panels, and live character streaming.
 
-#### 📝 Executive Summary
-In this foundational lab, I transitioned from a "User" mindset to an "Architect" mindset. I explored the Google Cloud Console—the central nervous system for global resource management—and established the security and billing boundaries required for enterprise-grade AI solutions.
+## 🚀 Installation & Setup
 
-#### 🛠️ Key Technical Competencies
-* **Resource Encapsulation:** I managed **Google Cloud Projects**, learning how they act as isolation boundaries for billing and security. I distinguished between **Temporary Lab Projects** (Full Access) and **Shared Resources** (Read-Only).
-* **Identity & Access Management (IAM):** I implemented the **Principle of Least Privilege** by assigning a "Viewer" role to a secondary principal. I mastered the power hierarchy of **Viewer vs. Editor vs. Owner**.
-* **Service Orchestration (APIs):** I practiced **Service Enablement** by activating the **Dialogflow API**. I learned that Google Cloud is a modular system where advanced AI capabilities must be explicitly "plugged in" via APIs.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Femology/Global-AI-Platform-Engineering.git
+   cd Global-AI-Platform-Engineering
+   ```
 
-#### Insight
-> "A Top 1% Architect doesn't just 'click buttons.' They manage the **Blast Radius**. By isolating the Dialogflow API within a specific Project and restricting permissions to 'Viewer' for non-essential staff, I protected the system from unauthorized changes and cost overruns."
+2. **Initialize a virtual environment:**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
 
----
+3. **Install dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-Started the Architecting with Google Compute Engine series. I am learning the Solution Continuum: balancing between IaaS (Maximum Control) and PaaS (Maximum Agility). I now understand that Infrastructure is the 'Underlying Framework' (Networking, Compute, Storage) that allows Applications to serve global users.
+4. **Configure your environment:**
+   Drop your custom API tokens into a `.env` file to chat instantly.
+   ```bash
+   cp .env.example .env
+   ```
+   *(Edit `.env` and add your `GROQ_API_KEY` and `GOOGLE_AI_STUDIO_KEY`)*
 
+## 💻 Usage
 
-When you update your GitHub for the Introduction to Google Cloud module, use this:
+To start chatting with Nexus-CLI, simply run:
+```bash
+python nexus.py
+```
+*To exit the session, type `exit` or `quit`.*
 
-    "I mastered the hierarchy of Regions and Zones. I learned that a Region is a geographic boundary (like a city) and a Zone is a failure boundary (like a neighborhood). As an Architect, I design for Fault Tolerance by distributing resources across multiple zones to ensure that a single point of failure (like a local power outage) does not result in a global service disruption
+## 🤝 Contributing
 
-When you update your GitHub for this section, use this:
+We love open-source contributions! To help maintain code quality and safety, please review our [Contributing Guidelines](CONTRIBUTING.md) before opening a pull request. 
 
-    "I deconstructed the two pillars of Network Performance: Bandwidth (Capacity) and Latency (Delay). I learned that as an Architect, I must balance both. For 'Global Solutions' like AI agents or Gaming, Low Latency is the priority to ensure real-time responsiveness, while High Bandwidth is essential for data-heavy tasks like model training or video streaming."
+## 📄 License
 
-
-    Strategic Insights: Interaction Modalities
-"I analyzed the four vectors of interacting with Google Cloud. While the Cloud Console provides vital visibility, I recognize that Cloud Shell / CLI (gcloud) and Admin APIs are the primary tools of an Architect. To build scalable AI platforms, infrastructure must be treated as code. I also noted the utility of the Cloud Mobile App for mobile incident management and critical SSH access during outages."
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
