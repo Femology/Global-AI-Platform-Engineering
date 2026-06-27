@@ -1,1 +1,26 @@
-﻿# 🔍 RepoLens`n`n**Privacy-First AI Repository Documentation Agent**`n`nRepoLens is an intelligent CLI tool that reads your Python codebase and generates high-level architectural summaries and developer onboarding guides.`n`nUnlike most AI coding tools that upload your raw, proprietary source code to external servers, **RepoLens parses your code fully offline** using Python's native Abstract Syntax Tree (`ast`). It extracts a pure structural blueprint (class names, function signatures, docstrings, and module dependencies) and only sends *that* lightweight, obfuscated blueprint to the LLM.`n`n**Result:** You get world-class AI documentation without compromising your proprietary logic or violating enterprise data policies.`n`n---`n`n## ✨ Features`n`n- **🛡️ Privacy-First:** Raw source code (loops, variables, inline logic) never leaves your machine.`n- **⚡ Offline AST Parsing:** Deterministic, fast, and syntax-error resilient repository scanning.`n- **🏗️ Clean Architecture:** Built with strict Domain, Use Case, and Infrastructure boundaries.`n- **🤖 LLM Enrichment:** Uses OpenAI's `gpt-4o-mini` to transform structural graphs into readable markdown.`n- **📦 Zero Third-Party Clutter:** Core parser requires only the Python standard library.`n`n---`n`n## 🚀 Installation`n`nEnsure you have Python 3.9+ installed.`n`n1. **Clone the repository:**`n   ```bash`n   git clone https://github.com/yourusername/repolens.git`n   cd repolens`n   ````n`n2. **Install the package (Editable mode recommended):**`n   ```bash`n   pip install -e .`n   ````n`n3. **Set your OpenAI API Key:**`n   ```bash`n   # Windows (PowerShell)`n   `$env:OPENAI_API_KEY="your-api-key-here"`n`n   # Mac/Linux`n   export OPENAI_API_KEY="your-api-key-here"`n   ````n`n---`n`n## 💻 Usage`n`nRun the `repolens` command from your terminal, pointing it at any local Python project:`n`n```bash`nrepolens --path ./my-project-folder --output ./docs`n````n`n### Arguments`n`n| Argument | Default | Description |`n|---|---|---|`n| `--path` | `.` (Current Dir) | The path to the local repository directory you want to scan. |`n| `--output` | Target `--path` | The directory where the markdown reports will be saved. |`n`n### Output`n`nRepoLens will generate two crisp Markdown files in your target output folder:`n1. 📄 `REPOLENS_SUMMARY.md`: A high-level architectural overview of the system's purpose and module layers.`n2. 📄 `REPOLENS_ONBOARDING.md`: A "Start Here" roadmap designed specifically for new engineers joining the project.`n`n---`n`n## 🧩 Architecture`n`nRepoLens is designed strictly around **Clean Architecture**:`n`n- `domain/models.py`: 100% pure Python dataclasses representing `RepositoryBlueprint`, `ClassInfo`, etc.`n- `infrastructure/parsers.py`: A native `ast.NodeVisitor` that builds domain entities without external dependencies.`n- `infrastructure/clients.py`: A standard-library `urllib` HTTP client connecting to OpenAI.`n- `usecase/scanner.py & enricher.py`: Orchestrates the offline scan and triggers the LLM enrichment.`n`n---`n`n## 🤝 Contributing`n`nContributions are welcome! Please feel free to submit a Pull Request. Currently looking for:`n- Support for extracting TypeScript/JavaScript ASTs.`n- Additional LLM client adapters (Anthropic, local Ollama endpoints).`n- Mermaid.js automated diagramming based on module imports.`n`n## 📄 License`n`nThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+# 🔍 RepoLens: Privacy-First Offline Architecture Analyzer
+
+RepoLens is a high-utility developer tool designed to map code structure and verify architectural boundaries using Python's native **Abstract Syntax Tree (AST)**. Unlike generic AI coding tools that upload your raw, proprietary source code to external cloud platforms, RepoLens analyzes your structural syntax blueprints completely offline—retaining absolute code privacy.
+
+---
+
+## 🚀 Key Features
+
+* **Deterministic Offline Analysis:** Operates entirely locally on your machine. Your proprietary intellectual property never traverses external networks.
+* **Abstract Syntax Tree (AST) Inspection:** Maps class hierarchies, function signatures, module dependencies, and docstrings from the logical blueprint of your code, completely avoiding rough regex-based string matching guesses.
+* **Clean Architecture Verification:** Evaluates structural dependency rules automatically to prevent low-level infrastructure leaking directly into high-level pure domain models.
+* **Developer Onboarding Mapping:** Automatically transforms a dense, unfamiliar repository into a scannable structural summary for immediate project understanding.
+
+---
+
+## 🛠️ Project Structure
+
+```text
+Global-AI-Platform-Engineering/
+├── src/
+│   └── repolens/
+│       └── infrastructure/
+│           └── parsers.py     <- Core deterministic AST analysis logic
+├── nexus.py                   <- Interface manager and CLI utility runner
+├── pyproject.toml             <- Python package configuration
+└── requirements.txt           <- Standard dependency listings
