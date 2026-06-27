@@ -1,0 +1,7 @@
+# RepoLens — runtime dependencies (Phase 1: bare essentials only)
+#
+# The domain layer is intentionally pure Python and needs nothing here.
+# We pin only what the immediate next phases will rely on.
+
+# Data validation & typed models for domain/serialization boundaries.
+pydantic>=2.6,<3.0
