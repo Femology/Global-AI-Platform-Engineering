@@ -1,4 +1,4 @@
-"""CLI Entrypoint and Composition Root for RepoLens.
+﻿"""CLI Entrypoint and Composition Root for RepoLens.
 
 This module provides the command-line interface, parses user arguments,
 wires together all layers of the Clean Architecture, and triggers the
@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 
 from repolens.infrastructure.parsers import PythonRepositoryParser
-from repolens.infrastructure.clients import EvoMapClient
+from repolens.infrastructure.clients import OpenAIClient
 from repolens.usecase.scanner import RepositoryScanner
 from repolens.usecase.enricher import AIEnrichmentService
 
@@ -49,13 +49,13 @@ def run() -> None:
     output_path.mkdir(parents=True, exist_ok=True)
 
     # 2. Check API Key
-    api_key = os.environ.get("EVOMAP_API_KEY")
+    api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
-        print("Error: EVOMAP_API_KEY environment variable is missing.")
+        print("Error: OPENAI_API_KEY environment variable is missing.")
         print("Please export it before running RepoLens.")
         sys.exit(1)
 
-    print(f"🚀 Initializing RepoLens scan on: {target_path}")
+    print(f"ðŸš€ Initializing RepoLens scan on: {target_path}")
 
     # ---------------------------------------------------------
     # 3. Composition Root (Dependency Injection)
@@ -65,7 +65,7 @@ def run() -> None:
     repo_parser = PythonRepositoryParser()
     
     # Infrastructure: LLM Client
-    llm_client = EvoMapClient(api_key=api_key)
+    llm_client = OpenAIClient(api_key=api_key)
     
     # Use Case: Scanner
     scanner = RepositoryScanner(parser=repo_parser)
@@ -76,16 +76,16 @@ def run() -> None:
     # ---------------------------------------------------------
     # 4. Execute Workflow
     # ---------------------------------------------------------
-    print("🔍 Parsing Python files and mapping architecture...")
+    print("ðŸ” Parsing Python files and mapping architecture...")
     blueprint = scanner.scan_directory(root_path=str(target_path))
     
-    print(f"✅ Found {blueprint.module_count} modules with "
+    print(f"âœ… Found {blueprint.module_count} modules with "
           f"{blueprint.total_classes} classes and {blueprint.total_functions} functions.")
-    print("🧠 Generating high-level repository summary via EvoMap...")
+    print("ðŸ§  Generating high-level repository summary via OpenAI...")
     
     summary_md = enricher.generate_repository_summary(blueprint)
     
-    print("🗺️ Generating developer onboarding guide...")
+    print("ðŸ—ºï¸ Generating developer onboarding guide...")
     onboarding_md = enricher.generate_onboarding_guide(blueprint)
 
     # 5. Output Results
@@ -95,9 +95,9 @@ def run() -> None:
     summary_file.write_text(summary_md, encoding="utf-8")
     onboarding_file.write_text(onboarding_md, encoding="utf-8")
 
-    print(f"🎉 Success! Documentation generated successfully:")
-    print(f"   📄 {summary_file}")
-    print(f"   📄 {onboarding_file}")
+    print(f"ðŸŽ‰ Success! Documentation generated successfully:")
+    print(f"   ðŸ“„ {summary_file}")
+    print(f"   ðŸ“„ {onboarding_file}")
 
 
 if __name__ == "__main__":

@@ -1,6 +1,6 @@
-"""Infrastructure adapter for LLM API integration.
+﻿"""Infrastructure adapter for LLM API integration.
 
-This module provides a concrete HTTP client that communicates with the EvoMap
+This module provides a concrete HTTP client that communicates with the OpenAI
 API Gateway. It adheres to the use case LLMClientProtocol without using any
 third-party libraries like `requests` or provider-specific SDKs.
 """
@@ -11,22 +11,22 @@ import urllib.request
 from typing import Optional
 
 
-class EvoMapClient:
-    """HTTP client for the EvoMap API Gateway."""
+class OpenAIClient:
+    """HTTP client for the OpenAI API."""
 
-    API_URL = "https://api.evomap.ai/v1/chat/completions"
-    MODEL = "evomap-gemini-3.1-pro-preview"
+    API_URL = "https://api.openai.com/v1/chat/completions"
+    MODEL = "gpt-4o-mini"
 
     def __init__(self, api_key: str) -> None:
         """Initialize the client.
         
         Args:
-            api_key: The developer's EvoMap API key.
+            api_key: The developer's OpenAI API key.
         """
         self.api_key = api_key.strip()
 
     def generate_completion(self, system_prompt: str, user_prompt: str) -> str:
-        """Send a prompt to the EvoMap LLM and return the textual response.
+        """Send a prompt to the OpenAI LLM and return the textual response.
         
         Uses the standard library `urllib` to ensure zero external dependencies.
         Wraps network interactions in robust error handling to prevent stack
@@ -66,17 +66,17 @@ class EvoMapClient:
                 
         except urllib.error.HTTPError as e:
             if e.code == 401:
-                return "> **Error:** Unauthorized. Please check your EvoMap API key."
+                return "> **Error:** Unauthorized. Please check your OpenAI API key."
             elif e.code == 429:
                 return "> **Error:** Rate limit exceeded. Please try again later."
             else:
-                return f"> **API Error:** Received status code {e.code} from EvoMap."
+                return f"> **API Error:** Received status code {e.code} from OpenAI."
                 
         except urllib.error.URLError as e:
-            return f"> **Network Error:** Failed to reach EvoMap API. ({e.reason})"
+            return f"> **Network Error:** Failed to reach OpenAI API. ({e.reason})"
             
         except TimeoutError:
-            return "> **Timeout Error:** The request to EvoMap took too long."
+            return "> **Timeout Error:** The request to OpenAI took too long."
             
         except (KeyError, json.JSONDecodeError):
-            return "> **Parsing Error:** Received an unexpected response format from EvoMap."
+            return "> **Parsing Error:** Received an unexpected response format from OpenAI."

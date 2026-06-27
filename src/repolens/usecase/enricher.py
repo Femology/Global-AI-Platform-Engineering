@@ -1,4 +1,4 @@
-"""Use case for enriching structural data with AI-generated insights.
+﻿"""Use case for enriching structural data with AI-generated insights.
 
 This module consumes raw RepositoryBlueprint aggregates and communicates with
 an abstract LLM interface to generate natural language documentation, such as
@@ -13,7 +13,7 @@ from repolens.domain.models import RepositoryBlueprint
 
 
 class LLMClientProtocol(Protocol):
-    """Abstract boundary for communicating with an LLM service (e.g. EvoMap API Gateway).
+    """Abstract boundary for communicating with an LLM service (e.g. OpenAI API).
     
     The infrastructure layer will provide the concrete HTTP client implementation.
     """
